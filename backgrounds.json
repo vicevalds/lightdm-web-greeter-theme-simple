@@ -1,0 +1,10 @@
+{
+  "evangelion.gif": {
+    "textColor": "#D73C31",
+    "placeholderColor": "#594F5D"
+  },
+  "ghost_in_the_shell.gif": {
+    "textColor": "#37B864",
+    "placeholderColor": "#525C77"
+  }
+}

@@ -8,11 +8,8 @@ input.addEventListener("keydown", function (e) {
 window.authentication_done = () => {
     if (lightdm.is_authenticated) {
         console.log("Authenticated!");
-        $( 'body' ).fadeOut( 1000, () => {
-            lightdm.start_session(lightdm.default_session);
-        } );
+        lightdm.start_session(lightdm.default_session);
     } else {
-        getImg();
         input.value = "";
         input.placeholder = "user";
         input.type = "text";
@@ -22,35 +19,10 @@ window.authentication_done = () => {
     }
 };
 
-function pad(a, b) {
-    return (1e15 + a + "").slice(-b);
-}
-
-async function getImg() {
-    let _paths = ['/usr/share/web-greeter/themes/arch/wallpapers','/usr/share/backgrounds/lightdm'];
-
-    function pullImages(paths, images){
-	    let path = paths.pop();
-	    theme_utils.dirlist(path, true, (data)=>{
-		    let new_images = images.concat(data);
-		    if(paths.length > 0)
-			    pullImages(paths, new_images);
-		    else{
-			    let index = Math.floor(Math.random() * data.length);
-			    document.getElementsByTagName('body')[0].style.backgroundImage =
-				"url("+ data[index] +")";
-		    }
-	    })
-    }
-    pullImages(_paths, []);
-}
-
 window.addEventListener("GreeterReady", () => {
     lightdm.authentication_complete?.connect(() => window.authentication_done());
-    getImg();
     input.focus();
     input.select();
-    input.value = lightdm.select_user_hint;
     if(input.value) {
       authenticate(input.value);
     }
