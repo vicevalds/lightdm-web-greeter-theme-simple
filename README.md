@@ -1,4 +1,4 @@
-# lightdm-web-greeter-theme-arch
+# lightdm-web-greeter-theme-simple
 
 https://github.com/user-attachments/assets/fc8a1b2a-7607-4a5b-9fb8-fa105d5e0e64
 
